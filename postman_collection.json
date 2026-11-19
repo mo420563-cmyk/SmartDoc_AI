@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "SmartDoc AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "base_url", "value": "http://127.0.0.1:8000"},
+    {"key": "document_id", "value": "1"}
+  ],
+  "item": [
+    {"name":"Health","request":{"method":"GET","url":"{{base_url}}/health"}},
+    {"name":"List Documents","request":{"method":"GET","url":"{{base_url}}/documents"}},
+    {"name":"Create Document","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"title\":\"API Notes\",\"content\":\"FastAPI provides tools for building Python APIs.\",\"priority\":2,\"description\":\"FastAPI notes\"}"},"url":"{{base_url}}/documents"}},
+    {"name":"Get Document","request":{"method":"GET","url":"{{base_url}}/documents/{{document_id}}"}},
+    {"name":"Update Document","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"title\":\"Updated API Notes\",\"content\":\"FastAPI and Gemini integration.\",\"priority\":3,\"description\":\"Updated notes\"}"},"url":"{{base_url}}/documents/{{document_id}}"}},
+    {"name":"Analyze Document","request":{"method":"POST","url":"{{base_url}}/documents/{{document_id}}/analyze"}},
+    {"name":"Ask Agent","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"message\":\"List the available documents and tell me their priorities\"}"},"url":"{{base_url}}/agent/ask"}},
+    {"name":"Invalid Create 422","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{base_url}}/documents"}},
+    {"name":"Missing Document 404","request":{"method":"GET","url":"{{base_url}}/documents/999999"}},
+    {"name":"Analyze Missing 404","request":{"method":"POST","url":"{{base_url}}/documents/999999/analyze"}}
+  ]
+}
