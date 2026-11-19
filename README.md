@@ -1,5 +1,7 @@
 # SmartDoc AI
 
+`FastAPI` `Python` `Gemini` `SQLite` `Alembic` — ITI Cross-Course Capstone Project.
+
 ITI Cross-Course Capstone Project.
 
 SmartDoc AI is a FastAPI document backend that stores documents in SQLite, analyzes document content with Gemini, and provides a controlled read-only document agent.
